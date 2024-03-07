@@ -30,6 +30,19 @@ def getJefeEmpresaInformacion():
             }
             empleadoObjeto.append(obtenerEmpleado)
     return empleadoObjeto
+
+def getEmpleadosNoRepresantesVentasInformacion():
+    empleadoObjeto = list()
+    for val in cli.empleado:
+        if val.get("puesto") != "Representante Ventas":
+            obtenerEmpleado = {
+                "nombre": val.get("nombre"),
+                "apellido1": val.get("apellido1"),
+                "apellido2": val.get("apellido2"),
+                "puesto": val.get("puesto"),
+            }
+            empleadoObjeto.append(obtenerEmpleado)
+    return empleadoObjeto
 # def getEmpleadoEspanioles():
 #     empleadoObjecto = list()
 #     for val in cli.empleado:
