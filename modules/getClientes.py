@@ -85,3 +85,4 @@ def getAllClienteEspanioles():
             }
             clienteEspaniolLista.append(clienteEspaniolObjeto)
     return clienteEspaniolLista
+
