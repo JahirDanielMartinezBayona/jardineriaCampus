@@ -7,4 +7,4 @@ from tabulate import tabulate
 #print (tabulate(empleados.getJefeEmpresaInformacion()))
 # print (tabulate(clientes.getAllClientTelefono()))
 #print(clientes.getAllClientTelefono())
-print(tabulate(pago.getAllCodigosPagosAño()))
+print(tabulate(pago.getAllCodigosPagosAnio()))
