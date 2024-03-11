@@ -39,3 +39,23 @@ def getAllPedidosRechazados():
                     "estado_pedido": valorPedido.get("estado")
                 })
     return pedidosRechazados
+
+def getAllPedidosEntregadosAtrasadosDeTiempo():
+    pedidosEntregado = []
+    for valorPedido in cli.pedido:
+        if valorPedido.get("estado") == "Entregado" and valorPedido.get("fecha_entrega") is None:
+           valorPedido["fecha_entrega"] = valorPedido.get("fecha_esperada")
+        if valorPedido.get("estado") == "Entregado":
+            date_1 = "/".join(valorPedido.get("fecha_entrega").split("-")[::-1])
+            date_2 = "/".join(valorPedido.get("fecha_esperada").split("-")[::-1])
+            start = datetime.strptime(date_1, "%d/%m/%Y")
+            end = datetime.strptime(date_2, "%d/%m/%Y")
+            diff = end.date() - start.date()
+            if(diff.days < 0):
+                pedidosEntregado.append({
+                    "codigo_de_pedido": valorPedido.get("codigo_pedido"),
+                    "codigo_de_cliente": valorPedido.get("codigo_cliente"),
+                    "fecha_de_esperada": valorPedido.get("fecha_esperada"),
+                    "fecha_de_entrega": valorPedido.get("fecha_entrega")
+                })
+    return pedidosEntregado
