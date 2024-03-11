@@ -59,3 +59,19 @@ def getAllPedidosEntregadosAtrasadosDeTiempo():
                     "fecha_de_entrega": valorPedido.get("fecha_entrega")
                 })
     return pedidosEntregado
+
+def getAllEnEnero():
+    pedidosEnero= []
+    for valorPedido in cli.pedido:
+        fecha_entrega = valorPedido.get ("fecha_entrega")
+        if fecha_entrega:
+            date_1= "/".join(valorPedido.get("fecha_entrega").split("-")[::-1])
+            start= datetime.strptime(date_1,"%d/%m/%Y")
+            if start.month == 1 and valorPedido.get("estado")=="Entregado":
+                pedidosEnero.append({
+                    "codigo_pedido": valorPedido.get("codigo_pedido"),
+                    "codigo_de_cliente": valorPedido.get("codigo_cliente"),
+                    "fecha_de_entrega": valorPedido.get("fecha_entrega"),
+                    "estado_pedido": valorPedido.get("estado")
+                })
+    return pedidosEnero
