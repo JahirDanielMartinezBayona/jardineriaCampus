@@ -86,3 +86,13 @@ def getAllClienteEspanioles():
             clienteEspaniolLista.append(clienteEspaniolObjeto)
     return clienteEspaniolLista
 
+# def menu():
+#     print("""
+#             Reportes de los clientes
+#                 1. Obtener todos los clientes (código y nombre)
+#                 2. Obtener un cliente por el código (código y nombre)
+#                 3. Obtener toda la información de un cliente según su límite de crédito y ciudad que pertenece
+        
+#         """)
+#     #opcion = int("\")
+# menu()

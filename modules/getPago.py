@@ -15,3 +15,16 @@ def getAllCodigosPagosAnio():
                 )
                 codigosMostrarSinRepetir.add(codigoCliente)
     return codigosAnio
+
+def getAllPagosFecha():
+    pagosFecha = []
+    for valorPago in cli.pago:
+        if("2008") in valorPago.get("fecha_pago") and valorPago.get("forma_pago") is ("PayPal"):
+            pagosFecha.append({
+                    "codigo_de_cliente": valorPago.get("codigo_cliente"),
+                    "fecha_pago": valorPago.get("fecha_pago"),
+                    "forma_pago": valorPago.get("forma_pago"),
+                    "total": valorPago.get("total")
+                })
+    pagosFecha = sorted(pagosFecha, key=lambda x: x ["total"], reverse=True)
+    return pagosFecha
