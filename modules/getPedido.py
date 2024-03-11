@@ -3,8 +3,8 @@ from datetime import datetime
 
 def getAllPedidoEstados():
     pedidoLista = set()
-    for val in cli.pedido:
-        estado = val.get("estado")
+    for valorPedido in cli.pedido:
+        estado = valorPedido.get("estado")
         pedidoLista.add(estado)
     return pedidoLista
 
@@ -27,3 +27,15 @@ def getAllPedidosEntregadosFueraTiempo():
                 "fechaEntrega": valorPedido.get("fecha_entrega")
             })
     return pedidosEntregado
+
+def getAllPedidosRechazados():
+    pedidosRechazados = []
+    for valorPedido in cli.pedido:
+        if("2009") in valorPedido.get("fecha_pedido") and valorPedido.get("estado") is ("Rechazado"):
+            pedidosRechazados.append({
+                    "codigo_pedido": valorPedido.get("codigo_pedido"),
+                    "codigo_de_cliente": valorPedido.get("codigo_cliente"),
+                    "fecha_pedido": valorPedido.get("fecha_pedido"),
+                    "estado_pedido": valorPedido.get("estado")
+                })
+    return pedidosRechazados

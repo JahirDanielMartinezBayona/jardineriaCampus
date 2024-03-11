@@ -28,3 +28,11 @@ def getAllPagosFecha():
                 })
     pagosFecha = sorted(pagosFecha, key=lambda x: x ["total"], reverse=True)
     return pagosFecha
+
+def getAllFormasDePago():
+    tipoPago = set()
+    for valorPago in cli.pago:
+        formaPago = valorPago.get("forma_pago")
+        if formaPago not in tipoPago:
+            tipoPago.add(formaPago)
+    return tipoPago
