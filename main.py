@@ -7,5 +7,5 @@ from tabulate import tabulate
 
 #print(tabulate(oficina.getAllCiudadTelefono('Australia')))
 
-print(tabulate(pedido.getAllPedidosEntregadosAtrasadosDeTiempo(), tablefmt="grid"))
+print(tabulate(pago.getAllFormasDePago(), tablefmt="grid"))
 #print(tabulate(pago.getAllCodigoClienteFecha()))
