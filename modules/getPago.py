@@ -1,8 +1,8 @@
-import storage.pago as cli
+import storage.pago as pa
 def getAllCodigosPagosAnio():
     codigosAnio = []
     codigosMostrarSinRepetir = set()
-    for valorPago in cli.pago:
+    for valorPago in pa.pago:
         if "2008" in valorPago.get("fecha_pago"):
             codigoCliente = valorPago.get("codigo_cliente")
             if codigoCliente not in codigosMostrarSinRepetir:
@@ -18,8 +18,8 @@ def getAllCodigosPagosAnio():
 
 def getAllPagosFecha():
     pagosFecha = []
-    for valorPago in cli.pago:
-        if("2008") in valorPago.get("fecha_pago") and valorPago.get("forma_pago") is ("PayPal"):
+    for valorPago in pa.pago:
+        if("2008") in valorPago.get("fecha_pago") and valorPago.get("forma_pago") == ("PayPal"):
             pagosFecha.append({
                     "codigo_de_cliente": valorPago.get("codigo_cliente"),
                     "fecha_pago": valorPago.get("fecha_pago"),
@@ -31,7 +31,7 @@ def getAllPagosFecha():
 
 def getAllFormasDePago():
     tipoPago = set()
-    for valorPago in cli.pago:
+    for valorPago in pa.pago:
         formaPago = valorPago.get("forma_pago")
         if formaPago not in tipoPago:
             tipoPago.add(formaPago)

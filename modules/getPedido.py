@@ -31,7 +31,7 @@ def getAllPedidosEntregadosFueraTiempo():
 def getAllPedidosRechazados():
     pedidosRechazados = []
     for valorPedido in cli.pedido:
-        if("2009") in valorPedido.get("fecha_pedido") and valorPedido.get("estado") is ("Rechazado"):
+        if("2009") in valorPedido.get("fecha_pedido") and valorPedido.get("estado") == ("Rechazado"):
             pedidosRechazados.append({
                     "codigo_pedido": valorPedido.get("codigo_pedido"),
                     "codigo_de_cliente": valorPedido.get("codigo_cliente"),
