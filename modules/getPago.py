@@ -52,3 +52,17 @@ def getAllClientesPagosNombreRepresentantesVentas():
                         }
                         clientesPagosRepresentanteVentas.append(clientesPagosRepresentanteVentasObjeto)
     return clientesPagosRepresentanteVentas
+
+def getAllClientesNoPagosNombreRepresentantesVentas():
+    clientesPagosRepresentanteVentas = list()
+    for valorPago in pa.pago:
+        for valorCliente in cli.cliente:
+            if valorPago.get("codigo_cliente") == valorCliente.get("codigo_cliente"):
+                for valorEmpleado in empl.empleado:
+                    if not(valorCliente.get("codigo_empleado_rep_ventas") == valorEmpleado.get("codigo_empleado")):
+                        clientesPagosRepresentanteVentasObjeto = {
+                            "nombre_cliente":valorCliente.get("nombre_cliente"),
+                            "nombre_representante":valorEmpleado.get("nombre")
+                        }
+                        clientesPagosRepresentanteVentas.append(clientesPagosRepresentanteVentasObjeto)
+    return clientesPagosRepresentanteVentas
