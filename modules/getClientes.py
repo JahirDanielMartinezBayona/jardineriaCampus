@@ -1,4 +1,5 @@
 import storage.cliente as cli 
+import storage.empleado as empl 
 def getAllClientesName():
     clienteName = list()
     for valorCliente in cli.cliente:
@@ -108,6 +109,20 @@ def getAllClientesMadrid11O30():
             }
             clientesMadridLista.append(clienteMadridObjeto)
     return clientesMadridLista
+
+def getAllNombreClienteNombreApellidoRepresentanteVentas():
+    clientesRepresentanteVentas = list()
+    for valorCliente in cli.cliente:
+        for valorEmpleado in empl.empleado:
+            if valorCliente.get("codigo_empleado_rep_ventas") == valorEmpleado.get("codigo_empleado"):
+                clientesRepresentanteVentasObjeto = {
+                    "nombre_cliente":valorCliente.get("nombre_cliente"),
+                    "nombre_representante":valorEmpleado.get("nombre"),
+                    "apellido_representante1":valorEmpleado.get("apellido1"),
+                    "apellido_representante2":valorEmpleado.get("apellido2")
+                }
+                clientesRepresentanteVentas.append(clientesRepresentanteVentasObjeto)
+    return clientesRepresentanteVentas
 # def menu():
 #     print("""
 #             Reportes de los clientes
