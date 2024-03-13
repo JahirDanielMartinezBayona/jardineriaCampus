@@ -1,4 +1,6 @@
 import storage.pago as pa
+import storage.cliente as cli
+import storage.empleado as empl
 def getAllCodigosPagosAnio():
     codigosAnio = []
     codigosMostrarSinRepetir = set()
@@ -36,3 +38,17 @@ def getAllFormasDePago():
         if formaPago not in tipoPago:
             tipoPago.add(formaPago)
     return tipoPago
+
+def getAllClientesPagosNombreRepresentantesVentas():
+    clientesPagosRepresentanteVentas = list()
+    for valorPago in pa.pago:
+        for valorCliente in cli.cliente:
+            if valorPago.get("codigo_cliente") == valorCliente.get("codigo_cliente"):
+                for valorEmpleado in empl.empleado:
+                    if valorCliente.get("codigo_empleado_rep_ventas") == valorEmpleado.get("codigo_empleado"):
+                        clientesPagosRepresentanteVentasObjeto = {
+                            "nombre_cliente":valorCliente.get("nombre_cliente"),
+                            "nombre_representante":valorEmpleado.get("nombre")
+                        }
+                        clientesPagosRepresentanteVentas.append(clientesPagosRepresentanteVentasObjeto)
+    return clientesPagosRepresentanteVentas

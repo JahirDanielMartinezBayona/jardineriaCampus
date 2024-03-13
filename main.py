@@ -4,4 +4,4 @@ import modules.getPedido as pedido
 import modules.getPago as pago
 from tabulate import tabulate
 
-print (tabulate(clientes.getAllNombreClienteNombreApellidoRepresentanteVentas(),headers="keys", tablefmt="github"))
+print (tabulate(pago.getAllClientesPagosNombreRepresentantesVentas(),headers="keys", tablefmt="github"))
