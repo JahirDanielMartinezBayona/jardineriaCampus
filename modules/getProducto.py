@@ -56,3 +56,4 @@ def menu():
             print(tabulate(getAllStocksPriceGama(gama,stock), headers="keys", tablefmt="github"))                         
         elif(opcion == 0):
             break
+        input("Seleccione una tecla para continuar......")

@@ -3,13 +3,14 @@ import modules.getEmpleados as empleados
 import modules.getPedido as pedido
 import modules.getPago as pago
 import os
+import time
 import modules.getOficina as oficina
 import modules.getProducto as readProducto
 import modules.updateProducto as updateProducto
 import modules.deleteProducto as deleteProducto
 from tabulate import tabulate
 import modules.postProducto as createProducto
-import modules.getGamas as gG
+import modules.getGamas as readGamas
 
 #print (tabulate(prod.defAllData(),headers="keys", tablefmt="github"))
 if(__name__ == "__main__"):
@@ -44,6 +45,7 @@ if(__name__ == "__main__"):
             elif(opcion == 0):
                 break
 
+
 def menuProducto():
     while True:
         os.system("clear")
@@ -57,9 +59,10 @@ def menuProducto():
                                            /_/                                                  
 
         1. Reportes de los productos
-        2. Guardar 
-        3. Actualizar
-        4. Eliminar productos
+        2. Reporte del nombre de la gama
+        3. Guardar 
+        4. Actualizar
+        5. Eliminar productos
         0. Regresar al menu principal
         """)
         # print("""
@@ -72,14 +75,22 @@ def menuProducto():
         opcion = int(input("\nSelecione una de las opciones: "))
         if(opcion == 1):
             readProducto.menu()
+            #time.sleep(10)
         elif(opcion == 2):
-            createProducto.menu()
+            readGamas.menuImprimirAllNombre()
+            #time.sleep(10)
         elif(opcion == 3):
-            updateProducto.menu()
+            createProducto.menu()
         elif(opcion == 4):
+            updateProducto.menu()
+        elif(opcion == 5):
             deleteProducto.menu()
         elif(opcion == 0):
             break
+        input("Seleccione una tecla para continuar......")
+
+
+
 menuPrincipal()
 # def exeProd():
 #     producto = {
