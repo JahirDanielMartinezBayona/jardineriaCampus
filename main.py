@@ -80,7 +80,7 @@ def menuProducto():
             readGamas.menuImprimirAllNombre()
             #time.sleep(10)
         elif(opcion == 3):
-            createProducto.menu()
+            createProducto.asistenteConsultas()
         elif(opcion == 4):
             updateProducto.menu()
         elif(opcion == 5):
