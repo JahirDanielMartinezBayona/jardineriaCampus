@@ -1,10 +1,16 @@
-import storage.pago as pa
-import storage.cliente as cli
-import storage.empleado as empl
+import modules.getClientes as cli
+import modules.getEmpleados as empl
+import requests
+
+def getAllData():
+    #json-server storage/pago.json -b 5504
+    peticion = requests.get("http://10.0.2.15:5504")
+    data = peticion.json()
+    return data
 def getAllCodigosPagosAnio():
     codigosAnio = []
     codigosMostrarSinRepetir = set()
-    for valorPago in pa.pago:
+    for valorPago in getAllData():
         if "2008" in valorPago.get("fecha_pago"):
             codigoCliente = valorPago.get("codigo_cliente")
             if codigoCliente not in codigosMostrarSinRepetir:
@@ -20,7 +26,7 @@ def getAllCodigosPagosAnio():
 
 def getAllPagosFecha():
     pagosFecha = []
-    for valorPago in pa.pago:
+    for valorPago in getAllData():
         if("2008") in valorPago.get("fecha_pago") and valorPago.get("forma_pago") == ("PayPal"):
             pagosFecha.append({
                     "codigo_de_cliente": valorPago.get("codigo_cliente"),
@@ -33,7 +39,7 @@ def getAllPagosFecha():
 
 def getAllFormasDePago():
     tipoPago = set()
-    for valorPago in pa.pago:
+    for valorPago in getAllData():
         formaPago = valorPago.get("forma_pago")
         if formaPago not in tipoPago:
             tipoPago.add(formaPago)
@@ -41,10 +47,10 @@ def getAllFormasDePago():
 
 def getAllClientesPagosNombreRepresentantesVentas():
     clientesPagosRepresentanteVentas = list()
-    for valorPago in pa.pago:
-        for valorCliente in cli.cliente:
+    for valorPago in getAllData():
+        for valorCliente in cli.getAllData():
             if valorPago.get("codigo_cliente") == valorCliente.get("codigo_cliente"):
-                for valorEmpleado in empl.empleado:
+                for valorEmpleado in empl.getAllData():
                     if valorCliente.get("codigo_empleado_rep_ventas") == valorEmpleado.get("codigo_empleado"):
                         clientesPagosRepresentanteVentasObjeto = {
                             "nombre_cliente":valorCliente.get("nombre_cliente"),
@@ -55,10 +61,10 @@ def getAllClientesPagosNombreRepresentantesVentas():
 
 def getAllClientesNoPagosNombreRepresentantesVentas():
     clientesPagosRepresentanteVentas = list()
-    for valorPago in pa.pago:
-        for valorCliente in cli.cliente:
+    for valorPago in getAllData():
+        for valorCliente in cli.getAllData():
             if valorPago.get("codigo_cliente") == valorCliente.get("codigo_cliente"):
-                for valorEmpleado in empl.empleado:
+                for valorEmpleado in empl.getAllData():
                     if not(valorCliente.get("codigo_empleado_rep_ventas") == valorEmpleado.get("codigo_empleado")):
                         clientesPagosRepresentanteVentasObjeto = {
                             "nombre_cliente":valorCliente.get("nombre_cliente"),
