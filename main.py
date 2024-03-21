@@ -4,7 +4,7 @@ import modules.getPedido as pedido
 import modules.getPago as pago
 import os
 import time
-import modules.getOficina as oficina
+import modules.getOficina as readOficina
 import modules.getProducto as readProducto
 import modules.updateProducto as updateProducto
 import modules.deleteProducto as deleteProducto
@@ -36,9 +36,9 @@ if(__name__ == "__main__"):
             if(opcion == 1):
                 clientes.menu()
             elif(opcion == 2):
-                oficina.menu()
+                menuEmpleados()
             elif(opcion == 3):
-                empleados.menu()
+                pago.menu()
             elif(opcion == 4):
                 pedido.menu()
             elif(opcion == 5):
@@ -46,6 +46,41 @@ if(__name__ == "__main__"):
             elif(opcion == 0):
                 break
 
+def menuEmpleados():
+    while True:
+        os.system("clear")
+        print("""
+    ____                        __                   __                             __               __          
+   / __ \___  ____  ____  _____/ /____  _____   ____/ /__     ___  ____ ___  ____  / /__  ____ _____/ /___  _____
+  / /_/ / _ \/ __ \/ __ \/ ___/ __/ _ \/ ___/  / __  / _ \   / _ \/ __ `__ \/ __ \/ / _ \/ __ `/ __  / __ \/ ___/
+ / _, _/  __/ /_/ / /_/ / /  / /_/  __(__  )  / /_/ /  __/  /  __/ / / / / / /_/ / /  __/ /_/ / /_/ / /_/ (__  ) 
+/_/ |_|\___/ .___/\____/_/   \__/\___/____/   \__,_/\___/   \___/_/ /_/ /_/ .___/_/\___/\__,_/\__,_/\____/____/  
+          /_/                                                            /_/                                             
+        1. Ver información de todas las oficinas
+        2. Guardar Oficina
+        3. Guardar Empleado
+        4. Actualizar Oficina
+        5. Actualizar Emplado      
+        6. Eliminar empleado
+        7. Eliminar empleado
+        0. Regresar al menu principal
+""")
+        opcion = int(input("\nSelecione una de las opciones: "))
+        if(opcion == 1):
+            readOficina.menu()
+        elif(opcion == 2):
+            readGamas.menuImprimirAllNombre()
+        elif(opcion == 3):
+            createProducto.asistenteConsultas()
+        elif(opcion == 4):
+            createGama.asistenteConsultas()
+        elif(opcion == 5):
+            updateProducto.menu()
+        elif(opcion == 6):
+            deleteProducto.menu()
+        elif(opcion == 0):
+            break
+        input("Seleccione una tecla para continuar......")
 
 def menuProducto():
     while True:
