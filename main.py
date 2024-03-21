@@ -11,6 +11,7 @@ import modules.deleteProducto as deleteProducto
 from tabulate import tabulate
 import modules.postProducto as createProducto
 import modules.postGama as createGama
+import modules.postOficina as createOficina
 import modules.getGamas as readGamas
 
 #print (tabulate(prod.defAllData(),headers="keys", tablefmt="github"))
@@ -69,7 +70,7 @@ def menuEmpleados():
         if(opcion == 1):
             readOficina.menu()
         elif(opcion == 2):
-            readGamas.menuImprimirAllNombre()
+            createOficina.asistenteConsultas()
         elif(opcion == 3):
             createProducto.asistenteConsultas()
         elif(opcion == 4):
