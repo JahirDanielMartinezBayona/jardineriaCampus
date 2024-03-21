@@ -10,7 +10,7 @@ import modules.updateProducto as updateProducto
 import modules.deleteProducto as deleteProducto
 from tabulate import tabulate
 import modules.postProducto as createProducto
-import modules.postGama as createGama
+import modules.postGamas as createGama
 import modules.postOficina as createOficina
 import modules.getGamas as readGamas
 

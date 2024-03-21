@@ -4,7 +4,7 @@ import requests
 
 def getAllData():
     #json-server storage/pago.json -b 5504
-    peticion = requests.get("http://10.0.2.15:5504")
+    peticion = requests.get("http://10.0.2.15:5506")
     data = peticion.json()
     return data
 def getAllCodigosPagosAnio():
