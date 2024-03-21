@@ -10,6 +10,7 @@ import modules.updateProducto as updateProducto
 import modules.deleteProducto as deleteProducto
 from tabulate import tabulate
 import modules.postProducto as createProducto
+import modules.postGama as createGama
 import modules.getGamas as readGamas
 
 #print (tabulate(prod.defAllData(),headers="keys", tablefmt="github"))
@@ -60,9 +61,10 @@ def menuProducto():
 
         1. Reportes de los productos
         2. Reporte del nombre de la gama
-        3. Guardar 
-        4. Actualizar
-        5. Eliminar productos
+        3. Guardar producto
+        4. Guardar gama
+        5. Actualizar
+        6. Eliminar productos
         0. Regresar al menu principal
         """)
         # print("""
@@ -75,15 +77,15 @@ def menuProducto():
         opcion = int(input("\nSelecione una de las opciones: "))
         if(opcion == 1):
             readProducto.menu()
-            #time.sleep(10)
         elif(opcion == 2):
             readGamas.menuImprimirAllNombre()
-            #time.sleep(10)
         elif(opcion == 3):
             createProducto.asistenteConsultas()
         elif(opcion == 4):
-            updateProducto.menu()
+            createGama.asistenteConsultas()
         elif(opcion == 5):
+            updateProducto.menu()
+        elif(opcion == 6):
             deleteProducto.menu()
         elif(opcion == 0):
             break

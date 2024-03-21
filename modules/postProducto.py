@@ -1,5 +1,6 @@
 import json
 import requests
+import os
 import modules.getGamas as gG
 
 def postProducto():
@@ -23,6 +24,7 @@ def postProducto():
 
 def asistenteConsultas():
     while True:
+        os.system("clear")
         print("""
    ______                     __              ____                 __           __           ______                _                      
   / ____/_  ______ __________/ /___ ______   / __ \_________  ____/ /_  _______/ /_____     / ____/___  ____ ___  (_)__  ____  ____ ____ _
@@ -32,4 +34,10 @@ def asistenteConsultas():
                                                                                                                                           
 """)
         postProducto()
-        
+        opcion = int(input("""
+¿Deseas continuar guardando otro producto?
+0. Regresar a la opción de Producto
+Presione cualquier otra número para seguir guardando productos...
+"""))
+        if(opcion == 0):
+            break
